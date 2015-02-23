@@ -14,5 +14,5 @@ exports = module.exports = function(app, mongoose) {
     }]
   });
 
-  mongoose.model('Products', PlacesSchema);
+  mongoose.model('Products', ProductsSchema);
 };

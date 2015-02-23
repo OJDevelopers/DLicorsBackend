@@ -25,7 +25,7 @@ exports = module.exports = function(app, mongoose) {
         name: String
       }
     },
-    PlacesCount: int,
+    PlacesCount: Number,
     InfoControl: 
     [{
       UserCreated: String,

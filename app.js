@@ -107,12 +107,12 @@ var places = express.Router();
 
 places.route('/places')
   .get(PlacesCtrl.findAllPlaces)
-  .post(PlacesCtrl.addTEvents);
+  .post(PlacesCtrl.addplaces);
 
 places.route('/places/:id')
   .get(PlacesCtrl.findplacesById)
-  .put(PlacesCtrl.updateTEvent)
-  .delete(PlacesCtrl.deleteTEvent);
+  .put(PlacesCtrl.updateplaces)
+  .delete(PlacesCtrl.deleteplaces);
 //-------------Fin rutas Places----------------//
 
 
@@ -163,7 +163,7 @@ app.use('/api', states);
 app.use('/api', products);
 app.use('/api', orders);
 
-var Port = process.env.PORT || 8888;
+var Port = 3350;//process.env.PORT || 8888;
 app.listen(Port, function() {
   console.log("Node server running on http://localhost:3000. Server IBoleta With MongoDB");
 });

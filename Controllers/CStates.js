@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var States = mongoose.model('TicketType');
+var States = mongoose.model('States');
 
   //GET - Return all Users in the DB
   exports.findAllStates = function(req, res) {

@@ -11,5 +11,5 @@ exports = module.exports = function(app, mongoose) {
     }]
   });
 
-  mongoose.model('States', TTicketSchema);
+  mongoose.model('States', StatesSchema);
 };

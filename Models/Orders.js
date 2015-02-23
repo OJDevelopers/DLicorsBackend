@@ -31,5 +31,5 @@ exports = module.exports = function(app, mongoose) {
     State: String
   });
 
-  mongoose.model('Orders', EventsSchema);
+  mongoose.model('Orders', OrdersSchema);
 };
