@@ -5,7 +5,7 @@ var express         = require("express"),
     methodOverride  = require("method-override"),
     mongoose        = require('mongoose');
 
-mongoose.connect('mongodb://asephirot:ALSephirot04140324@ds053300.mongolab.com:53300/guiadb', function(err, res) {
+mongoose.connect('mongodb://Administrator:DLicors2015!@ds063170.mongolab.com:63170/dlicors', function (err, res) {
 //mongoose.connect('mongodb://localhost/GuiaDB', function(err, res) {
   if(err) {
     console.log('ERROR: connecting to Database. ' + err);

@@ -30,6 +30,14 @@ exports = module.exports = function(app, mongoose) {
 			name: String
 		}
 	},
+	Places:
+    [{
+        name: String,
+        geo: {
+            Lat: String,
+            Long: String
+        }
+    }],
 	Payment:
     [{
     	Type: String,
