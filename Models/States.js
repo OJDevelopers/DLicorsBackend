@@ -1,5 +1,5 @@
 exports = module.exports = function(app, mongoose) {
-  var TTicketSchema = new mongoose.Schema({
+  var StatesSchema = new mongoose.Schema({
     Code: String,
     Name: String,
     InfoControl: 
@@ -11,5 +11,5 @@ exports = module.exports = function(app, mongoose) {
     }]
   });
 
-  mongoose.model('TicketType', TTicketSchema);
+  mongoose.model('States', TTicketSchema);
 };
