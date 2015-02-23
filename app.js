@@ -132,11 +132,11 @@ states.route('/states/:id')
 //------------Inicio rutas Products-----------//
 var products = express.Router();
 
-products.route('/states')
+products.route('/products')
   .get(ProductsCtrl.findAllProducts)
   .post(ProductsCtrl.addproducts);
 
-products.route('/states/:id')
+products.route('/products/:id')
   .get(ProductsCtrl.findproductsById)
   .put(ProductsCtrl.updateproducts)
   .delete(ProductsCtrl.deleteproducts);
@@ -145,11 +145,11 @@ products.route('/states/:id')
 //------------Inicio rutas Orders-----------//
 var orders = express.Router();
 
-orders.route('/states')
+orders.route('/orders')
   .get(OrdersCtrl.findAllOrders)
   .post(OrdersCtrl.addOrders);
 
-orders.route('/states/:id')
+orders.route('/orders/:id')
   .get(OrdersCtrl.findOrdersById)
   .put(OrdersCtrl.updateOrders)
   .delete(OrdersCtrl.deleteOrders);
