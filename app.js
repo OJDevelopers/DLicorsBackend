@@ -21,22 +21,24 @@ app.use(methodOverride());
 
 var MUser     = require('./models/Users')(app, mongoose);
 var UsersCtrl = require('./Controllers/CUsers');
-var MTEvent = require('./models/EventType')(app, mongoose);
-var TEventCtrl = require('./Controllers/CEventType');
 var MGeography = require('./models/Geography')(app, mongoose);
 var GeographyCtrl = require('./Controllers/CGeography');
 var MTPayment = require('./models/PaymentType')(app, mongoose);
 var TPaymentCtrl = require('./Controllers/CPaymentType');
-var MTTicket = require('./models/TicketType')(app, mongoose);
-var TTicketCtrl = require('./Controllers/CTicketType');
 var MPlaces = require('./models/Places')(app, mongoose);
 var PlacesCtrl = require('./Controllers/CPlaces');
+var MStates = require('./models/States')(app, mongoose);
+var StatesCtrl = require('./Controllers/CStates');
+var MProducts = require('./models/Products')(app, mongoose);
+var ProductsCtrl = require('./Controllers/CProducts');
+var MOrders = require('./models/Orders')(app, mongoose);
+var OrdersCtrl = require('./Controllers/COrders');
 
 
 
 var router = express.Router();
 router.get('/', function(req, res) {
-  res.send("<h1>Api Rest IBoleta With MongoDB running...</h1>");
+  res.send("<h1>Api Rest DLicors With MongoDB running...</h1>");
 });
 
 
@@ -64,18 +66,6 @@ usersr.route('/userNomUsu/:NomUsu')
   .get(UsersCtrl.findUserByNomUsu);
 //----------Fin rutas Users-------------------//
 
-//------------Inicio rutas Event Type-----------//
-var teventr = express.Router();
-
-teventr.route('/tevent')
-  .get(TEventCtrl.findAllTEvents)
-  .post(TEventCtrl.addTEvents);
-
-teventr.route('/tevent/:id')
-  .get(TEventCtrl.findTEventsById)
-  .put(TEventCtrl.updateTEvent)
-  .delete(TEventCtrl.deleteTEvent);
-//-------------Fin rutas Event Type----------------//
 
 //------------Inicio rutas Geography-----------//
 var geography = express.Router();
@@ -112,37 +102,66 @@ tpayment.route('/tpayment/:id')
   .delete(TPaymentCtrl.deleteTPayment);
 //-------------Fin rutas Payment Type----------------//
 
-//------------Inicio rutas Ticket Type-----------//
-var tticket = express.Router();
-
-tticket.route('/tticket')
-  .get(TTicketCtrl.findAllTTicket)
-  .post(TTicketCtrl.addTTicket);
-
-tticket.route('/tticket/:id')
-  .get(TTicketCtrl.findTTicketById)
-  .put(TTicketCtrl.updateTTicket)
-  .delete(TTicketCtrl.deleteTTicket);
-//-------------Fin rutas Ticket Type----------------//
-
-//------------Inicio rutas Ticket Type-----------//
+//------------Inicio rutas Places-----------//
 var places = express.Router();
 
-places.route('/tticket')
+places.route('/places')
   .get(PlacesCtrl.findAllPlaces)
-  .post(PlacesCtrl.addplaces);
+  .post(PlacesCtrl.addTEvents);
 
-places.route('/tticket/:id')
+places.route('/places/:id')
   .get(PlacesCtrl.findplacesById)
-  .put(PlacesCtrl.updateplaces)
-  .delete(PlacesCtrl.deleteplaces);
-//-------------Fin rutas Ticket Type----------------//
+  .put(PlacesCtrl.updateTEvent)
+  .delete(PlacesCtrl.deleteTEvent);
+//-------------Fin rutas Places----------------//
 
-app.use('/api', usersr);
-app.use('/api',teventr);
+
+//------------Inicio rutas States-----------//
+var states = express.Router();
+
+states.route('/states')
+  .get(StatesCtrl.findAllStates)
+  .post(StatesCtrl.addStates);
+
+states.route('/states/:id')
+  .get(StatesCtrl.findStatesById)
+  .put(StatesCtrl.updateStates)
+  .delete(StatesCtrl.deleteStates);
+//-------------Fin rutas States----------------//
+
+//------------Inicio rutas Products-----------//
+var products = express.Router();
+
+products.route('/states')
+  .get(ProductsCtrl.findAllProducts)
+  .post(ProductsCtrl.addproducts);
+
+products.route('/states/:id')
+  .get(ProductsCtrl.findproductsById)
+  .put(ProductsCtrl.updateproducts)
+  .delete(ProductsCtrl.deleteproducts);
+//-------------Fin rutas Products----------------//
+
+//------------Inicio rutas Orders-----------//
+var orders = express.Router();
+
+orders.route('/states')
+  .get(OrdersCtrl.findAllOrders)
+  .post(OrdersCtrl.addOrders);
+
+orders.route('/states/:id')
+  .get(OrdersCtrl.findOrdersById)
+  .put(OrdersCtrl.updateOrders)
+  .delete(OrdersCtrl.deleteOrders);
+//-------------Fin rutas Orders----------------//
+
+app.use('/api',usersr);
 app.use('/api',geography);
-app.use('/api',tticket);
+app.use('/api',tpayment);
 app.use('/api',places);
+app.use('/api', states);
+app.use('/api', products);
+app.use('/api', orders);
 
 var Port = 3050;//process.env.PORT || 8888;
 app.listen(Port, function() {

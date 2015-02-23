@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
-var TTicket = mongoose.model('TicketType');
+var States = mongoose.model('TicketType');
 
   //GET - Return all Users in the DB
-  exports.findAllTTicket = function(req, res) {
-  	console.log(TTicket);
-  	TTicket.find(function(err, tticket) {
-  		console.log(tticket);
+  exports.findAllStates = function(req, res) {
+  	console.log(States);
+  	States.find(function(err, states) {
+  		console.log(states);
   		if(!err) {
-  			res.send(tticket);
+  			res.send(states);
   		} else {
   			console.log('ERROR: ' + err);
   		}
@@ -15,10 +15,10 @@ var TTicket = mongoose.model('TicketType');
   };
 
   //GET - Return a User with specified ID
-  exports.findTTicketById = function(req, res) {
-      TTicket.findById(req.params.id,function(err, tticket) {
+  exports.findStatesById = function(req, res) {
+      States.findById(req.params.id,function(err, states) {
       if(!err) {
-        res.send(tticket);
+        res.send(states);
       } else {
         console.log('ERROR: ' + err);
       }
@@ -26,13 +26,13 @@ var TTicket = mongoose.model('TicketType');
   };
 
   //POST - Insert a new User in the DB
-  exports.addTTicket = function(req, res) {
+  exports.addStates = function(req, res) {
     console.log('POST');
     console.log(req.body);
 
     try
     {
-      var tticket = new TTicket({
+      var states = new States({
         Code: req.body.Code,
         Name: req.body.Name,
         InfoControl: 
@@ -44,7 +44,7 @@ var TTicket = mongoose.model('TicketType');
         }]
       });
 
-      tticket.save(function(err) {
+      states.save(function(err) {
         if(!err) {
           console.log('Ticket Type "'+ req.body.Name +'" Created Succefull');
         } else {
@@ -52,7 +52,7 @@ var TTicket = mongoose.model('TicketType');
         }
       });
 
-      res.send(tticket);
+      res.send(states);
     }
     catch(error)
     {
@@ -62,14 +62,14 @@ var TTicket = mongoose.model('TicketType');
   };
 
   //PUT - Update a User already exists
-  exports.updateTTicket = function(req, res)
+  exports.updateStates = function(req, res)
   {
-    TTicket.findById(req.params.id, function(err, tticket) {
-      tticket.Code= req.body.Code,
-      tticket.Name= req.body.Name,
-      tticket.InfoControl= req.body.InfoControl
+    States.findById(req.params.id, function(err, states) {
+      states.Code= req.body.Code,
+      states.Name= req.body.Name,
+      states.InfoControl= req.body.InfoControl
 
-      tticket.save(function(err) {
+      states.save(function(err) {
         if(!err) 
         {
           console.log('Ticket type "'+ req.body.Name +'" Updated Succefull');
@@ -79,15 +79,15 @@ var TTicket = mongoose.model('TicketType');
           console.log('ERROR: ' + err);
         }
 
-        res.send(tticket);
+        res.send(states);
       });
     });
   };
 
   //DELETE - Delete a User with specified ID
-  exports.deleteTTicket = function(req, res) {
-    TTicket.findById(req.params.id, function(err, tticket) {
-      tticket.remove(function(err) {
+  exports.deleteStates = function(req, res) {
+    States.findById(req.params.id, function(err, states) {
+      states.remove(function(err) {
         if(!err) {
       console.log('Ticket Type with Id "'+ req.params.id +'" Removed Succefull');
         } else {

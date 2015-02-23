@@ -76,6 +76,7 @@ var Users = mongoose.model('Users');
             name: req.body.Geo.State.name
           }
         },
+        Places: req.body.Places,
         Payment: req.body.Payment,
         InfoControl: req.body.InfoControl
       });
@@ -114,6 +115,7 @@ var Users = mongoose.model('Users');
       user.Geo.State.code = req.body.Geo.State.code, 
       user.Geo.State.name = req.body.Geo.State.name
       user.Payment = req.body.Payment,
+      user.Places = req.body.Places,
       user.InfoControl = req.body.InfoControl
 
       user.save(function(err) {

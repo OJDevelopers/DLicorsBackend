@@ -37,9 +37,9 @@ var Places = mongoose.model('Places');
         Name: req.body.Name,
         Geolocalization:
         {
-          Lat: req.body.Geolocalization.Lat;
-          Long: req.body.Geolocalization.Long;
-        }
+          Lat: req.body.Geolocalization.Lat,
+          Long: req.body.Geolocalization.Long
+        },
         Geography: 
         {
           Country: 
@@ -57,7 +57,7 @@ var Places = mongoose.model('Places');
             code: req.body.Geography.State.code, 
             name: req.body.Geography.State.name
           }
-        }
+        },
         PlacesCount: req.body.PlacesCount,
         InfoControl: req.body.InfoControl
       });
@@ -84,18 +84,18 @@ var Places = mongoose.model('Places');
   {
     Places.findById(req.params.id, function(err, places) {
 
-      places.Code: req.body.Code,
-      places.Name: req.body.Name,
-      places.Geolocalization.Lat: req.body.Geolocalization.Lat;
-      places.Geolocalization.Long: req.body.Geolocalization.Long;
-      places.Geography.Country.code: req.body.Geography.Country.code, 
-      places.Geography.Country.name: req.body.Geography.Country.name
-      places.Geography.City.code: req.body.Geography.City.code, 
-      places.Geography.City.name: req.body.Geography.City.name
-      places.Geography.State.code: req.body.Geography.State.code, 
-      places.Geography.State.name: req.body.Geography.State.name
-      places.PlacesCount: req.body.PlacesCount,
-      places.InfoControl: req.body.InfoControl
+      places.Code= req.body.Code,
+      places.Name= req.body.Name,
+      places.Geolocalization.Lat= req.body.Geolocalization.Lat;
+      places.Geolocalization.Long= req.body.Geolocalization.Long;
+      places.Geography.Country.code= req.body.Geography.Country.code, 
+      places.Geography.Country.name= req.body.Geography.Country.name
+      places.Geography.City.code= req.body.Geography.City.code, 
+      places.Geography.City.name= req.body.Geography.City.name
+      places.Geography.State.code= req.body.Geography.State.code, 
+      places.Geography.State.name= req.body.Geography.State.name
+      places.PlacesCount= req.body.PlacesCount,
+      places.InfoControl= req.body.InfoControl
 
       places.save(function(err) {
         if(!err) 

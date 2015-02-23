@@ -1,7 +1,10 @@
 exports = module.exports = function(app, mongoose) {
-  var TEventSchema = new mongoose.Schema({
+  var ProductsSchema = new mongoose.Schema({
     Code: String,
     Name: String,
+    Description: String,
+    UnitValue: Number,
+    City: String,
     InfoControl: 
     [{
       UserCreated: String,
@@ -11,5 +14,5 @@ exports = module.exports = function(app, mongoose) {
     }]
   });
 
-  mongoose.model('EventType', TEventSchema);
+  mongoose.model('Products', PlacesSchema);
 };

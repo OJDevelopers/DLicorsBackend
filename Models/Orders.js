@@ -4,7 +4,7 @@ exports = module.exports = function(app, mongoose) {
     User: {
     	Id: String,
     	Name: String,
-    	PersonalId: String
+    	PersonalId: String,
     	TelephoneNumber: String,
     },
     Products: [{
@@ -27,7 +27,7 @@ exports = module.exports = function(app, mongoose) {
       userModified: String,
       DateCreated: Date,
       DateModified: Date
-    }]
+    }],
     State: String
   });
 

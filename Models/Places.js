@@ -4,9 +4,9 @@ exports = module.exports = function(app, mongoose) {
     Name: String,
     Geolocalization:
     {
-      Lat: String;
-      Long: String;
-    }
+      Lat: String,
+      Long: String
+    },
     Geography: 
     {
       Country: 
@@ -24,7 +24,7 @@ exports = module.exports = function(app, mongoose) {
         code: String, 
         name: String
       }
-    }
+    },
     PlacesCount: int,
     InfoControl: 
     [{
