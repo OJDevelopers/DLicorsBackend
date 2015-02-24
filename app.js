@@ -136,6 +136,9 @@ products.route('/products')
   .get(ProductsCtrl.findAllProducts)
   .post(ProductsCtrl.addproducts);
 
+products.route('/productsByCity/:City')
+  .get(ProductsCtrl.findproductsByCiudad);
+
 products.route('/products/:id')
   .get(ProductsCtrl.findproductsById)
   .put(ProductsCtrl.updateproducts)
@@ -163,7 +166,7 @@ app.use('/api', states);
 app.use('/api', products);
 app.use('/api', orders);
 
-var Port = process.env.PORT || 8888;
+var Port = 3350;//process.env.PORT || 8888;
 app.listen(Port, function() {
   console.log("Node server running on http://localhost:3000. Server IBoleta With MongoDB");
 });

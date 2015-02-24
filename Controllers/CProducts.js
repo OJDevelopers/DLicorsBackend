@@ -25,6 +25,17 @@ var Products = mongoose.model('Products');
     });
   };
 
+  //GET - Return a products with specified City
+  exports.findproductsByCiudad = function (req, res) {
+      Products.find({City:req.params.City}, function (err, products) {
+          if (!err) {
+              res.send(products);
+          } else {
+              console.log('ERROR: ' + err);
+          }
+      });
+  };
+
   //POST - Insert a new products in the DB
   exports.addproducts = function(req, res) {
     console.log('POST');
