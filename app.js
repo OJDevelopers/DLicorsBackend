@@ -41,13 +41,16 @@ router.get('/', function(req, res) {
   res.send("<h1>Api Rest DLicors With MongoDB running...</h1>");
 });
 
+router.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 
 app.use(router);
 
-router.use(function(req, res, next) {  
-    res.header('Access-Control-Allow-Origin', '*');
-    next();
-});
+
 
 // API routes
 var usersr = express.Router();
