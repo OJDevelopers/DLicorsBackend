@@ -67,6 +67,9 @@ usersr.route('/user/:id')
 
 usersr.route('/userNomUsu/:NomUsu')
   .get(UsersCtrl.findUserByNomUsu);
+  
+usersr.route('/userByCel/:IdCel')
+  .get(UsersCtrl.findUserByCelular);
 //----------Fin rutas Users-------------------//
 
 
@@ -169,7 +172,7 @@ app.use('/api', states);
 app.use('/api', products);
 app.use('/api', orders);
 
-var Port = 3350;//process.env.PORT || 8888;
+var Port = process.env.PORT || 8888;
 app.listen(Port, function() {
   console.log("Node server running on http://localhost:3000. Server IBoleta With MongoDB");
 });

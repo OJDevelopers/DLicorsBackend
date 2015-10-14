@@ -37,6 +37,19 @@ var Users = mongoose.model('Users');
       }
     });
   };
+  
+    //GET - Return a User with specified celular
+  exports.findUserByCelular = function(req, res) {
+    //Users.findById(req.param.id, function(err, guia) {
+      Users.find({IdCelular:req.params.IdCel},function(err, user) {
+      console.log(req.params);
+      if(!err) {
+        res.send(user);
+      } else {
+        console.log('ERROR: ' + err);
+      }
+    });
+  };
 
   //POST - Insert a new User in the DB
   exports.addUser = function(req, res) {
@@ -50,6 +63,8 @@ var Users = mongoose.model('Users');
         {
           Name: req.body.BasicInfo.Name,
           LastName: req.body.BasicInfo.LastName,
+          IdPersonal: req.body.BasicInfo.IdPersonal,
+          Telephone: req.body.BasicInfo.Telephone,
           Age: req.body.BasicInfo.Age,
           DateBirth: req.body.BasicInfo.DateBirth
         },
@@ -78,7 +93,8 @@ var Users = mongoose.model('Users');
         },
         Places: req.body.Places,
         Payment: req.body.Payment,
-        InfoControl: req.body.InfoControl
+        InfoControl: req.body.InfoControl,
+        IdCelular: req.body.IdCelular
       });
 
       user.save(function(err) {
@@ -116,7 +132,8 @@ var Users = mongoose.model('Users');
       user.Geo.State.name = req.body.Geo.State.name
       user.Payment = req.body.Payment,
       user.Places = req.body.Places,
-      user.InfoControl = req.body.InfoControl
+      user.InfoControl = req.body.InfoControl,
+      user.IdCelular = req.body.IdCelular
 
       user.save(function(err) {
         if(!err) 

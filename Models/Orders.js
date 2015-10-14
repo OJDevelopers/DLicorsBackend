@@ -21,6 +21,7 @@ exports = module.exports = function(app, mongoose) {
     	City: String
     },
     PaymentType: String,
+    Place: String,
     InfoControl: 
     [{
       UserCreated: String,
@@ -28,6 +29,7 @@ exports = module.exports = function(app, mongoose) {
       DateCreated: Date,
       DateModified: Date
     }],
+    Observation: String,
     State: String
   });
 

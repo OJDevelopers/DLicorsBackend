@@ -46,23 +46,25 @@ var Orders = mongoose.model('Orders');
     try
     {
         var orders = new Orders({
-            OrdenNumber: String,
+            OrdenNumber: req.body.OrdenNumber,
             User: {
-                Id: req.body.Id,
-                Name: req.body.Name,
-                PersonalId: req.body.PersonalId,
-                TelephoneNumber: req.body.TelephoneNumber,
+                Id: req.body.User.Id,
+                Name: req.body.User.Name,
+                PersonalId: req.body.User.PersonalId,
+                TelephoneNumber: req.body.User.TelephoneNumber,
             },
             Products: req.body.Products,
             Geo:{
-                Lat: req.body.Lat,
-                Long: req.body.Long,
-                Country: req.body.Country,
-                Province: req.body.Province,
-                City: req.body.City
+                Lat: req.body.Geo.Lat,
+                Long: req.body.Geo.Long,
+                Country: req.body.Geo.Country,
+                Province: req.body.Geo.Province,
+                City: req.body.Geo.City
             },
             PaymentType: req.body.PaymentType,
+            Place: req.body.Place,
             InfoControl: req.body.InfoControl,
+            Observation: req.body.Observation,
             State: req.body.State
       });
 
@@ -92,7 +94,9 @@ var Orders = mongoose.model('Orders');
           orders.Products = req.body.Products,
           orders.Geo = req.body.Geo,
           orders.PaymentType = req.body.PaymentType,
+          orders.Place =  req.body.Place,
           orders.InfoControl = req.body.InfoControl,
+          orders.Observation = req.body.Observation,
           orders.State = req.body.State
 
       orders.save(function(err) {

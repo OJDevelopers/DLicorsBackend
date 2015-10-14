@@ -4,6 +4,8 @@ exports = module.exports = function(app, mongoose) {
     {
     	Name: String,
     	LastName: String,
+        IdPersonal: String,
+        Telephone: String,
     	Age: Number,
     	DateBirth: Date
     },
@@ -33,6 +35,8 @@ exports = module.exports = function(app, mongoose) {
 	Places:
     [{
         name: String,
+        Direction: String,
+        Barrio: String,
         geo: {
             Lat: String,
             Long: String
@@ -50,7 +54,8 @@ exports = module.exports = function(app, mongoose) {
       userModified: String,
       DateCreated: Date,
       DateModified: Date
-    }]
+    }],
+    IdCelular: String
   });
 
   mongoose.model('Users', UsersSchema);
