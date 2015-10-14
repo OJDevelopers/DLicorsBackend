@@ -3,7 +3,8 @@ var express         = require("express"),
     app             = express(),
     bodyParser      = require("body-parser"),
     methodOverride  = require("method-override"),
-    mongoose        = require('mongoose');
+    mongoose        = require('mongoose'),
+    compress        = require('compression');;
 
 mongoose.connect('mongodb://Administrator:DLicors2015!@ds063170.mongolab.com:63170/dlicors', function (err, res) {
 //mongoose.connect('mongodb://localhost/GuiaDB', function(err, res) {
@@ -18,6 +19,7 @@ mongoose.connect('mongodb://Administrator:DLicors2015!@ds063170.mongolab.com:631
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
+app.use(compress());
 
 var MUser     = require('./models/Users')(app, mongoose);
 var UsersCtrl = require('./Controllers/CUsers');
@@ -33,6 +35,8 @@ var MProducts = require('./models/Products')(app, mongoose);
 var ProductsCtrl = require('./Controllers/CProducts');
 var MOrders = require('./models/Orders')(app, mongoose);
 var OrdersCtrl = require('./Controllers/COrders');
+var MCategories = require('./models/Categories')(app, mongoose);
+var CategoriesCtrl = require('./Controllers/CCategories');
 
 
 
@@ -145,6 +149,9 @@ products.route('/products')
 products.route('/productsByCity/:City')
   .get(ProductsCtrl.findproductsByCiudad);
 
+products.route('/productsByCity/:City/:Category')
+  .get(ProductsCtrl.findproductsByCiudadByCatego);
+
 products.route('/products/:id')
   .get(ProductsCtrl.findproductsById)
   .put(ProductsCtrl.updateproducts)
@@ -164,6 +171,19 @@ orders.route('/orders/:id')
   .delete(OrdersCtrl.deleteOrders);
 //-------------Fin rutas Orders----------------//
 
+//------------Inicio rutas Categories-----------//
+var categories = express.Router();
+
+categories.route('/categories')
+  .get(CategoriesCtrl.findAllCategories)
+  .post(CategoriesCtrl.addcategories);
+
+categories.route('/categories/:id')
+  .get(CategoriesCtrl.findcategoriesById)
+  .put(CategoriesCtrl.updatecategories)
+  .delete(CategoriesCtrl.deletecategories);
+//-------------Fin rutas Categories----------------//
+
 app.use('/api',usersr);
 app.use('/api',geography);
 app.use('/api',tpayment);
@@ -171,6 +191,7 @@ app.use('/api',places);
 app.use('/api', states);
 app.use('/api', products);
 app.use('/api', orders);
+app.use('/api', categories);
 
 var Port = process.env.PORT || 8888;
 app.listen(Port, function() {

@@ -5,6 +5,7 @@ exports = module.exports = function(app, mongoose) {
     Description: String,
     UnitValue: Number,
     City: String,
+    Category: String,
     InfoControl: 
     [{
       UserCreated: String,
