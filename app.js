@@ -6,7 +6,7 @@ var express         = require("express"),
     mongoose        = require('mongoose'),
     compress        = require('compression');;
 
-mongoose.connect('mongodb://Administrator:DLicors2015!@ds063170.mongolab.com:63170/dlicors', function (err, res) {
+mongoose.connect('mongodb://Prueba:Luiselmejor@ds063170.mongolab.com:63170/dlicors', function (err, res) {
 //mongoose.connect('mongodb://localhost/GuiaDB', function(err, res) {
   if(err) {
     console.log('ERROR: connecting to Database. ' + err);
@@ -193,7 +193,7 @@ app.use('/api', products);
 app.use('/api', orders);
 app.use('/api', categories);
 
-var Port = process.env.PORT || 8888;
+var Port = 3000;//process.env.PORT || 8888;
 app.listen(Port, function() {
   console.log("Node server running on http://localhost:3000. Server IBoleta With MongoDB");
 });
